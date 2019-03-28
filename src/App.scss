@@ -13,6 +13,12 @@ a {
 .Link-test {
   color: white;
   display: inline-block;
+  &.Active::after {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    transition: width 0.5s;
+  }
   &::after {
     content: '';
     width: 0px;
