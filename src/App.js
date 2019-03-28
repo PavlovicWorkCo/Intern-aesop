@@ -1,14 +1,13 @@
-/* eslint-disable */
-
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import FakeLink from './components/FakeLink/FakeLink';
 import './App.scss';
 
+/* eslint-disable react/prefer-stateless-function, react/jsx-filename-extension */
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <a href="open-menu">aaaa</a>
+        <FakeLink href="/#menu" className="Link-test" text="test-link" />
       </div>
     );
   }

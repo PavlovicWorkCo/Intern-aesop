@@ -1,8 +1,30 @@
 @import "styles/colors.scss";
+a {
+  text-decoration: none;
+}
 .App {
   text-align: center;
   background-color: $color-red;
   // &:hover {
   //   background-color: $color-green;
   // }
+}
+
+.Link-test {
+  color: white;
+  display: inline-block;
+  &::after {
+    content: '';
+    width: 0px;
+    height: 1px;
+    display: block;
+    background-color: white;
+    transition: width 0.5s;
+  }
+  &:hover::after {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    transition: width 0.5s;
+  }
 }
