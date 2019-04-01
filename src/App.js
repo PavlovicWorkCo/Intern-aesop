@@ -11,18 +11,6 @@ class App extends Component {
         <div>
           blalblasdsdsd
         </div>
-        <div>
-          blalblasdsdsd
-        </div>
-        <div>
-          blalblasdsdsd
-        </div>
-        <div>
-          blalblasdsdsd
-        </div>
-        <div>
-          blalblasdsdsd
-        </div>
       </div>
     );
   }
