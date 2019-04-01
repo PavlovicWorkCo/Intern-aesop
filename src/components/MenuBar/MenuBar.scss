@@ -1,0 +1,28 @@
+.Menu-bar {
+  left: 30px;
+  top: 0px;
+  display: inline-block;
+  position: absolute;
+  z-index: 6;
+  margin-top: 20px;
+
+  .Menu-link {
+    color: black;
+    display: inline-block;
+    margin-right: 30px;
+    &.Active::after {
+      width: 100%;
+    }
+    &::after {
+      content: '';
+      width: 0px;
+      height: 1px;
+      display: block;
+      background-color: black;
+      transition: width 0.5s;
+    }
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}

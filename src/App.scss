@@ -1,36 +1,10 @@
-@import "styles/colors.scss";
-a {
-  text-decoration: none;
-}
-.App {
-  text-align: center;
-  background-color: $color-red;
-  // &:hover {
-  //   background-color: $color-green;
-  // }
-}
+@import "/styles/colors.scss";
 
-.Link-test {
-  color: white;
-  display: inline-block;
-  &.Active::after {
-    width: 100%;
-    height: 1px;
-    background-color: white;
-    transition: width 0.5s;
-  }
-  &::after {
-    content: '';
-    width: 0px;
-    height: 1px;
-    display: block;
-    background-color: white;
-    transition: width 0.5s;
-  }
-  &:hover::after {
-    width: 100%;
-    height: 1px;
-    background-color: white;
-    transition: width 0.5s;
-  }
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 120vh;
+  background-color: $header-white;
 }
