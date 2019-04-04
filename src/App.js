@@ -1,14 +1,16 @@
-/* eslint-disable */
-
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Menu from './components/Menu/Menu';
 import './App.scss';
 
+/* eslint-disable react/prefer-stateless-function, react/jsx-filename-extension */
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <a href="open-menu">aaaa</a>
+        <Menu />
+        <div>
+          blalblasdsdsd
+        </div>
       </div>
     );
   }

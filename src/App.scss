@@ -1,8 +1,10 @@
-@import "styles/colors.scss";
+@import "/styles/colors.scss";
+
 .App {
-  text-align: center;
-  background-color: $color-red;
-  // &:hover {
-  //   background-color: $color-green;
-  // }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 120vh;
+  background-color: $header-white;
 }
