@@ -1,0 +1,189 @@
+@import "../../styles/colors.scss";
+
+.Footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid lightgray;
+  padding: 5px 0 60px 0;
+  width: 100%;
+  justify-content: space-around;
+  .Email-form {
+    width: 30%;
+    .Subscribe-info {
+      color: gray;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+    }
+    .Label {
+      position: relative;
+      height: 20px;
+      .Label-text {
+        position: absolute;
+        top: 0px;
+        margin: 0;
+        transition: transform 0.2s, font-size 0.2s;
+        pointer-events: none;
+        font-size: 1.2rem;
+        &.Above-input {
+          transform: translate(0, -25px);
+          font-size: 0.9rem;
+        }
+      }
+      .Input {
+        height: 20px;
+        background: none;
+        border: none;
+        border-bottom: 1px solid gray;
+        outline: none;
+        width: 100%;
+        margin-top: 50px;
+        font-size: 1rem;
+        padding: 0 0 10px 0;
+      }
+    }
+  }
+  .Link-lists-container {
+    width: calc(60% - 80px);
+    display: flex;
+    justify-content: space-around;
+    padding-right: 80px;
+    .Link-list {
+      display: flex;
+      flex-direction: column;
+      .List-name {
+        color: gray;
+        margin: 10px 0 30px 0;
+        font-size: 0.9rem;
+        background: none;
+        border: none;
+        font-family: 'Suisse Regular', sans-serif;
+        padding: 0;
+      }
+      .Link {
+        margin: 8px 0px;
+        font-size: 0.9em;
+        font-weight: 400;
+        font-family: 'Suisse Medium', sans-serif;
+      }
+    }
+  }
+}
+
+.Bottom-footer {
+  background-color: $dark-gray;
+  width: calc(100% - 70px);
+  padding: 17px 35px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  color: white;
+  font-size: 0.85rem;
+  .Country {
+    margin-right: 30px;
+  }
+}
+
+@media (max-width: 1025px) {
+  .Footer-container {
+    .Link-lists-container {
+      padding-right: 0px;
+      width: 50%;
+    }
+    .Email-form {
+      width: 35%;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .Footer-container {
+    flex-direction: column;
+    align-items: center;
+    .Link-lists-container {
+      width: calc(100% - 140px);
+      padding: 20px 70px 0 70px;
+      justify-content: space-between;
+      margin-top: 80px;
+      border-top: 1px solid lightgray;
+    }
+    .Email-form {
+      width: calc(100% - 140px);
+      .Label {
+        .Input {
+          margin-top: 40px;
+          width: 60%;
+          min-width: 340px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .Footer-container {
+    padding-bottom: 0;
+    .Link-lists-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      .Link-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+        .List-name {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0;
+          padding: 20px 10px;
+          .Arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 12px;
+            height: 20px;
+            transition: transform 0.3s;
+            &::after, &::before {
+              background-color: #333;
+              content: '';
+              height: 2px;
+              position: absolute;
+              width: 8px;
+              right: 0;
+            }
+            &::after {
+              transform: rotate(45deg);
+              right: 4px;
+            }
+            &::before {
+              transform: rotate(-45deg);
+            }
+            &.Active {
+              transform: rotate(180deg);
+              transform-origin: center center;
+            }
+          }
+        }
+        .Link-list-items {
+          display: flex;
+          flex-direction: column;
+          padding-left: 10px;
+          padding-bottom: 20px;
+          align-items: flex-start;
+        }
+      }
+    }
+    .Email-form {
+      width: 90%;
+      .Label {
+        .Input {
+          width: 100%;
+          min-width: 0;
+        }
+      }
+    }
+  }
+}

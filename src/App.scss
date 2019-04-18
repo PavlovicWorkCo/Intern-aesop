@@ -3,8 +3,14 @@
 .App {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-width: 100%;
-  min-height: 120vh;
-  background-color: $header-white;
+  flex-direction: column;
+  background-color: $darker-cream;
+}
+
+a {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }

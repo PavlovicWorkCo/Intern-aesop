@@ -9,16 +9,28 @@ class MenuList extends React.PureComponent {
     };
   }
 
+  handleMouseEnterMenuItem(menuItem) {
+    const { windowSize, setSubMenu } = this.props;
+    if (windowSize === 'small') return;
+    setSubMenu(menuItem);
+  }
+
   render() {
     const {
       menuItemsArray, className, visibleMenuName, menuName, setSubMenu,
+      menuIsActive, windowSize, subMenuName,
     } = this.props;
-    const isVisibleClass = visibleMenuName === menuName ? 'Visible' : '';
+    const isVisibleClass = visibleMenuName === menuName && menuIsActive && (windowSize !== 'small' || !subMenuName) ? 'Visible' : '';
     const menuItems = menuItemsArray.map((menuItem, index) => {
       const listSlideClass = isVisibleClass ? `Slide-in-${index}` : '';
       return (
-        <li className={`Menu-list-item ${listSlideClass}`}>
-          <FakeLink onMouseEnter={() => setSubMenu(menuItem)} text={menuItem} className="Menu-fake-link" />
+        <li key={menuItem} className={`Menu-list-item ${listSlideClass}`}>
+          <FakeLink
+            onMouseEnter={() => this.handleMouseEnterMenuItem(menuItem)}
+            onClick={() => setSubMenu(menuItem)}
+            text={menuItem}
+            className="Menu-fake-link"
+          />
         </li>
       );
     });
@@ -36,14 +48,20 @@ MenuList.defaultProps = {
   visibleMenuName: null,
   menuName: null,
   setSubMenu: null,
+  menuIsActive: null,
+  windowSize: null,
+  subMenuName: null,
 };
 
 MenuList.propTypes = {
-  menuItemsArray: PropTypes.string,
+  menuItemsArray: PropTypes.array,
   className: PropTypes.string,
   visibleMenuName: PropTypes.string,
   menuName: PropTypes.string,
   setSubMenu: PropTypes.func,
+  menuIsActive: PropTypes.bool,
+  windowSize: PropTypes.string,
+  subMenuName: PropTypes.string,
 };
 
 export default MenuList;

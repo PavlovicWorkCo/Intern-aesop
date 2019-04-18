@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FakeLink from '../FakeLink/FakeLink';
 import './MenuBar.scss';
+import arrowPicture from '../../assets/left-arrow.svg';
+/* eslint-disable */
 
 class MenuBar extends React.PureComponent {
   constructor() {
@@ -18,7 +20,8 @@ class MenuBar extends React.PureComponent {
   }
 
   handleFakeLinkMouseEnter(menuBarOption) {
-    const { menuIsActive, showMenuList } = this.props;
+    const { menuIsActive, showMenuList, windowSize } = this.props;
+    if (windowSize === 'small') return;
     if (menuIsActive) {
       this.setActiveMenuBarOption(menuBarOption);
     }
@@ -26,22 +29,24 @@ class MenuBar extends React.PureComponent {
   }
 
   handleFakeLinkClick(menuBarOption) {
-    const { menuIsActive, openMenu } = this.props;
-    if (menuIsActive) return;
+    const { openMenu, showMenuList } = this.props;
     this.setActiveMenuBarOption(menuBarOption);
+    showMenuList(menuBarOption);
     openMenu();
   }
 
   handleFakeLinkMouseLeave() {
-    const { menuIsActive } = this.props;
+    const { menuIsActive, windowSize } = this.props;
+    if (windowSize === 'small') return;
     if (menuIsActive) return;
     this.setActiveMenuBarOption(null);
   }
 
   renderMenuBarOptions() {
     const { activeMenuBarOption } = this.state;
-    const { menuIsActive } = this.props;
+    const { handleCloseMenuClick, menuIsActive } = this.props;
     const menuBarOptionsArray = ['Shop', 'Read'];
+    const closeButtonVisibleClass = menuIsActive ? 'Visible' : '';
     const menuBarOptions = menuBarOptionsArray.map((menuBarOption) => {
       const activeClass = menuBarOption === activeMenuBarOption && menuIsActive ? 'Active' : '';
       return (
@@ -51,18 +56,41 @@ class MenuBar extends React.PureComponent {
           onClick={() => this.handleFakeLinkClick(menuBarOption)}
           onMouseEnter={() => this.handleFakeLinkMouseEnter(menuBarOption)}
           onMouseLeave={() => this.handleFakeLinkMouseLeave()}
+          key={menuBarOption}
         />
       );
     });
     return (
-      menuBarOptions
+      <div className="Menu-bar-left">
+        <div className="Menu-bar-options">
+          {menuBarOptions}
+        </div>
+        <button type="button" tabIndex={menuIsActive ? 0 : -1} className={`Close-menu ${closeButtonVisibleClass}`} onClick={handleCloseMenuClick} />
+      </div>
     );
   }
 
   render() {
-    const { className } = this.props;
+    const { className, menuIsActive, windowSize, handleBackButton } = this.props;
+    const toggleMenuActive = menuIsActive ? 'Active' : '';
     return (
-      <div className={className}>{this.renderMenuBarOptions()}</div>
+      <div className={className}>
+        {windowSize === 'small' && (
+          <button
+            onClick={() => handleBackButton()}
+            type="button"
+            className={`Menu-back-button ${toggleMenuActive}`}
+          ><img src={arrowPicture} /> </button>
+        )}
+        {windowSize !== 'small' && this.renderMenuBarOptions()}
+        <div>
+          <FakeLink tabIndex={menuIsActive ? -1 : 0} text="Login" className="Menu-link Login-button" />
+          <button
+            className={`Toggle-menu ${toggleMenuActive}`}
+            type="button" onClick={() => this.handleFakeLinkClick('Toggle-menu')}
+          />
+        </div>
+      </div>
     );
   }
 }
@@ -73,6 +101,9 @@ MenuBar.defaultProps = {
   openMenu: null,
   showMenuList: null,
   className: 'Menu-bar',
+  handleCloseMenuClick: null,
+  windowSize: null,
+  handleBackButton: null,
 };
 
 MenuBar.propTypes = {
@@ -80,6 +111,9 @@ MenuBar.propTypes = {
   openMenu: PropTypes.func,
   showMenuList: PropTypes.func,
   className: PropTypes.string,
+  handleCloseMenuClick: PropTypes.func,
+  windowSize: PropTypes.string,
+  handleBackButton: PropTypes.func,
 };
 
 export default MenuBar;

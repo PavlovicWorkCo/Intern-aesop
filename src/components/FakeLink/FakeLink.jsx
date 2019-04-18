@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const FakeLink = ({
-  text, className, href, onClick, onMouseEnter, onMouseLeave,
+  text, className, href, onClick, onMouseEnter, onMouseLeave, tabIndex,
 }) => (
   <a
     onClick={onClick}
@@ -10,6 +10,7 @@ const FakeLink = ({
     className={className}
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
+    tabIndex={tabIndex}
   >
     <span>
       {text}
@@ -24,6 +25,7 @@ FakeLink.defaultProps = {
   onClick: null,
   onMouseEnter: null,
   onMouseLeave: null,
+  tabIndex: null,
 };
 
 FakeLink.propTypes = {
@@ -33,6 +35,7 @@ FakeLink.propTypes = {
   onClick: PropTypes.func,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
+  tabIndex: PropTypes.number,
 };
 
 export default FakeLink;
