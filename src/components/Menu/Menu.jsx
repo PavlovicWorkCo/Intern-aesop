@@ -29,6 +29,7 @@ class Menu extends React.PureComponent {
         document.getElementsByTagName('BODY')[0].style.overflow = 'visible';
       }
     }
+
     if (prevProps.windowSize !== windowSize) {
       this.closeMenu();
     }
@@ -80,7 +81,7 @@ class Menu extends React.PureComponent {
       menuIsActive: false,
     });
   }
-
+  
   handleSubMenuMouseLeave() {
     this.setState({
       subMenuDetailsVisible: false,

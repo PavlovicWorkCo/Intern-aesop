@@ -33,7 +33,6 @@
   background-color: $light-cream;
   position: fixed;
   left: 0;
-  // transform: translate(-100%, 0);
   top: 0;
   transition: transform 0.5s ease-out;
   padding-top: 30px;
@@ -88,7 +87,6 @@
 
 .Sub-menu {
   position: fixed;
-  // transform: translate(-100%);
   left: calc(100% * 1/3);
   top: 0;
   height: 100%;
@@ -134,7 +132,6 @@
   position: fixed;
   top: 0;
   left: calc(100% * 2/3);
-  // transform: translate(-100%);
   width: calc(100% * 1/3);
   background-color: $darker-cream;
   height: 100%;

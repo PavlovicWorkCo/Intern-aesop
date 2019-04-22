@@ -8,7 +8,6 @@ class MenuList extends React.PureComponent {
     this.state = {
     };
   }
-
   handleMouseEnterMenuItem(menuItem) {
     const { windowSize, setSubMenu } = this.props;
     if (windowSize === 'small') return;

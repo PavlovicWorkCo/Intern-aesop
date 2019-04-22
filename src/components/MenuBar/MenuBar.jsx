@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import FakeLink from '../FakeLink/FakeLink';
 import './MenuBar.scss';
 import arrowPicture from '../../assets/left-arrow.svg';
-/* eslint-disable */
 
 class MenuBar extends React.PureComponent {
   constructor() {
