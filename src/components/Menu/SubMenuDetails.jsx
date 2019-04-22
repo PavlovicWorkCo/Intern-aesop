@@ -21,7 +21,7 @@ SubMenuDetails.defaultProps = {
 
 SubMenuDetails.propTypes = {
   visibleMenuName: PropTypes.string,
-  isVisible: PropTypes.string,
+  isVisible: PropTypes.bool,
 };
 
 export default SubMenuDetails;
