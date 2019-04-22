@@ -70,7 +70,9 @@ class MenuBar extends React.PureComponent {
   }
 
   render() {
-    const { className, menuIsActive, windowSize, handleBackButton } = this.props;
+    const {
+      className, menuIsActive, windowSize, handleBackButton,
+    } = this.props;
     const toggleMenuActive = menuIsActive ? 'Active' : '';
     return (
       <div className={className}>
@@ -79,14 +81,17 @@ class MenuBar extends React.PureComponent {
             onClick={() => handleBackButton()}
             type="button"
             className={`Menu-back-button ${toggleMenuActive}`}
-          ><img src={arrowPicture} /> </button>
+          >
+            <img alt="left arrow" src={arrowPicture} />
+          </button>
         )}
         {windowSize !== 'small' && this.renderMenuBarOptions()}
         <div>
           <FakeLink tabIndex={menuIsActive ? -1 : 0} text="Login" className="Menu-link Login-button" />
           <button
             className={`Toggle-menu ${toggleMenuActive}`}
-            type="button" onClick={() => this.handleFakeLinkClick('Toggle-menu')}
+            type="button"
+            onClick={() => this.handleFakeLinkClick('Toggle-menu')}
           />
         </div>
       </div>

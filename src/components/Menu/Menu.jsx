@@ -81,7 +81,7 @@ class Menu extends React.PureComponent {
       menuIsActive: false,
     });
   }
-  
+
   handleSubMenuMouseLeave() {
     this.setState({
       subMenuDetailsVisible: false,
