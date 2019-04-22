@@ -43,7 +43,7 @@ class Menu extends React.PureComponent {
       subMenuName: name,
     },
     () => {
-      document.querySelector('.Sub-menu.Visible a').focus();
+      document.querySelector('.Sub-menu a').focus();
     });
   }
 
@@ -116,7 +116,7 @@ class Menu extends React.PureComponent {
     },
     () => {
       if (visibleMenuName === 'Toggle-menu') {
-        document.querySelector('.Test-menu.Open-menu .Menu-list.Visible  a').focus();
+        document.querySelector('.Test-menu.Open-menu .Menu-list a').focus();
       }
     });
   }
@@ -134,7 +134,7 @@ class Menu extends React.PureComponent {
       menuIsActive, visibleMenuName, subMenuName, subMenuDetailsVisible,
     } = this.state;
     const { windowSize } = this.props;
-    const openMenuClass = menuIsActive ? 'Open-menu' : '';
+    const openMenuClass = !menuIsActive ? 'Closed-menu' : '';
     const menuClickBlockerActive = menuIsActive && windowSize !== 'small' ? 'Active' : '';
     const subMenuArray = subMenuName ? [] : null;
     if (subMenuName) {

@@ -11,7 +11,7 @@ const SubMenu = ({
         <FakeLink text={subMenuItem} onMouseEnter={handleSubMenuMouseEnter} onClick={handleSubMenuMouseEnter} className="Sub-menu-link" />
       </li>
     )) : null;
-  const subMenuVisibleClass = subMenuLinks && menuIsActive ? 'Visible' : '';
+  const subMenuVisibleClass = !(subMenuLinks && menuIsActive) ? 'Inactive' : '';
   return (
     <div className={`Sub-menu ${subMenuVisibleClass}`}>
       <ul className="Sub-menu-list">
