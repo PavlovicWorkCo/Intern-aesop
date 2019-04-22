@@ -6,7 +6,7 @@ import exampleProductPicture from '../../assets/Aesop-Skin-In-Two-Minds-Facial-C
 const SubMenuDetails = ({
   isVisible, visibleMenuName,
 }) => {
-  const subMenuDetailVisibleClass = !isVisible ? 'Inactive' : '';
+  const subMenuDetailVisibleClass = !isVisible ? 'Inactive' : 'Active';
   return (
     <div className={`Sub-menu-detail ${subMenuDetailVisibleClass}`}>
       {visibleMenuName === 'Shop' ? <img className={`Product-picture ${subMenuDetailVisibleClass}`} src={exampleProductPicture} alt="product description" /> : <div> description </div>}

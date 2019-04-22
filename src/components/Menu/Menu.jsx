@@ -43,7 +43,7 @@ class Menu extends React.PureComponent {
       subMenuName: name,
     },
     () => {
-      document.querySelector('.Sub-menu a').focus();
+      document.querySelector('.Sub-menu.Active a').focus();
     });
   }
 
@@ -116,7 +116,7 @@ class Menu extends React.PureComponent {
     },
     () => {
       if (visibleMenuName === 'Toggle-menu') {
-        document.querySelector('.Test-menu.Open-menu .Menu-list a').focus();
+        document.querySelector('.Test-menu.Open-menu .Menu-list.Visible a').focus();
       }
     });
   }
@@ -134,7 +134,7 @@ class Menu extends React.PureComponent {
       menuIsActive, visibleMenuName, subMenuName, subMenuDetailsVisible,
     } = this.state;
     const { windowSize } = this.props;
-    const openMenuClass = !menuIsActive ? 'Closed-menu' : '';
+    const openMenuClass = !menuIsActive ? 'Closed-menu' : 'Open-menu';
     const menuClickBlockerActive = menuIsActive && windowSize !== 'small' ? 'Active' : '';
     const subMenuArray = subMenuName ? [] : null;
     if (subMenuName) {
@@ -184,11 +184,15 @@ class Menu extends React.PureComponent {
                 subMenuName={subMenuName}
               />
             </div>
-            <SubMenu
-              subMenuArray={subMenuArray}
-              handleSubMenuMouseEnter={() => this.showSubMenuDetails()}
-              menuIsActive={menuIsActive}
-            />
+            {
+              menuIsActive && (
+                <SubMenu
+                  subMenuArray={subMenuArray}
+                  handleSubMenuMouseEnter={() => this.showSubMenuDetails()}
+                  menuIsActive={menuIsActive}
+                />
+              )
+            }
             { windowSize !== 'small' && subMenuName && (
               <SubMenuDetails
                 visibleMenuName={visibleMenuName}
