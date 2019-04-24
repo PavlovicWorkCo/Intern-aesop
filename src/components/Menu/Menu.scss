@@ -181,14 +181,15 @@
     left: 0;
     opacity: 1;
     transition: none;
+    padding-top: 0;
+    .Menu-list {
+      top: 150px;
+    }
     &.Closed-menu {
       transform: translate(-100%);
       transition: opacity 0.5s, visibility 0s linear 0.5s;
       visibility: hidden;
       opacity: 0;
-      .Menu-list {
-        top: 150px;
-      }
     }
   }
   .Sub-menu {
