@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OutsideClickHandler from 'react-outside-click-handler';
 import FocusTrap from 'focus-trap-react';
-import MenuBar from '../MenuBar/MenuBar';
+import MenuBarHook from '../MenuBar/MenuBarHook';
 import MenuList from './MenuList';
 import SubMenu from './SubMenu';
 import SubMenuDetails from './SubMenuDetails';
@@ -148,7 +148,7 @@ class Menu extends React.PureComponent {
       <React.Fragment>
         <FocusTrap active={menuIsActive}>
           <OutsideClickHandler onOutsideClick={() => this.handleOutsideOfMenuClick()}>
-            <MenuBar
+            <MenuBarHook
               menuIsActive={menuIsActive}
               openMenu={() => this.openMenu()}
               showMenuList={listName => this.showMenuList(listName)}
