@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Change the activeMenuBarOption value testing MenuBar snapshot 1`] = `
+<div
+  className="Menu-bar"
+>
+  <div
+    className="Menu-bar-left"
+  >
+    <div
+      className="Menu-bar-options"
+    >
+      <a
+        className="Menu-link "
+        href="#"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        tabIndex={null}
+      >
+        <span>
+          Shop
+        </span>
+      </a>
+      <a
+        className="Menu-link "
+        href="#"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        tabIndex={null}
+      >
+        <span>
+          Read
+        </span>
+      </a>
+    </div>
+    <button
+      className="Close-menu "
+      onClick={null}
+      tabIndex={-1}
+      type="button"
+    />
+  </div>
+  <div>
+    <a
+      className="Menu-link Login-button"
+      href="#"
+      onClick={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex={0}
+    >
+      <span>
+        Login
+      </span>
+    </a>
+    <button
+      className="Toggle-menu "
+      onClick={[Function]}
+      type="button"
+    />
+  </div>
+</div>
+`;
+
+exports[`My first snapshot test testing MenuBar snapshot 1`] = `
+<div
+  className="Menu-bar"
+>
+  <div
+    className="Menu-bar-left"
+  >
+    <div
+      className="Menu-bar-options"
+    >
+      <a
+        className="Menu-link "
+        href="#"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        tabIndex={null}
+      >
+        <span>
+          Shop
+        </span>
+      </a>
+      <a
+        className="Menu-link "
+        href="#"
+        onClick={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        tabIndex={null}
+      >
+        <span>
+          Read
+        </span>
+      </a>
+    </div>
+    <button
+      className="Close-menu "
+      onClick={null}
+      tabIndex={-1}
+      type="button"
+    />
+  </div>
+  <div>
+    <a
+      className="Menu-link Login-button"
+      href="#"
+      onClick={null}
+      onMouseEnter={null}
+      onMouseLeave={null}
+      tabIndex={0}
+    >
+      <span>
+        Login
+      </span>
+    </a>
+    <button
+      className="Toggle-menu "
+      onClick={[Function]}
+      type="button"
+    />
+  </div>
+</div>
+`;

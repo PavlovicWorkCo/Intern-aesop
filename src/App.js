@@ -4,7 +4,7 @@ import Content from './components/Content/Content';
 import Footer from './components/Footer/Footer';
 import './App.scss';
 
-/* eslint-disable react/prefer-stateless-function, react/jsx-filename-extension */
+/* eslint-disable react/jsx-filename-extension */
 class App extends Component {
   constructor() {
     super();
