@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   handleResize = () => {
-    if (document.documentElement.clientWidth < 651) {
+    if (document.documentElement.clientWidth < 641) {
       this.setState({
         windowSize: 'small',
       });
