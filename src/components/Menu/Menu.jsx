@@ -62,10 +62,7 @@ class Menu extends React.PureComponent {
       });
       return;
     }
-    this.setState({
-      visibleMenuName: null,
-      menuIsActive: null,
-    });
+    this.closeMenu();
   }
 
   handleOutsideOfMenuClick() {
@@ -75,11 +72,9 @@ class Menu extends React.PureComponent {
         visibleMenuName: null,
         subMenuName: null,
         subMenuDetailsVisible: false,
+        menuIsActive: false,
       });
     }
-    this.setState({
-      menuIsActive: false,
-    });
   }
 
   handleSubMenuMouseLeave() {
@@ -89,12 +84,18 @@ class Menu extends React.PureComponent {
   }
 
   closeMenu() {
+    const { windowSize } = this.props;
     this.setState({
       menuIsActive: false,
       subMenuName: null,
       subMenuDetailsVisible: false,
       visibleMenuName: null,
     });
+    if (windowSize === 'small') {
+      document.querySelector('.Menu-bar button.Toggle-menu').focus();
+    } else {
+      document.querySelector('.Menu-bar .Menu-bar-options a').focus();
+    }
   }
 
   openMenu() {

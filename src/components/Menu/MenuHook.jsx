@@ -47,38 +47,16 @@ export default function MenuHook({ windowSize }) {
     setSubMenuName(null);
     setSubMenuDetailsVisible(false);
     setVisibleMenuName(null);
+    if (windowSize === 'small') {
+      document.querySelector('.Menu-bar button.Toggle-menu').focus();
+    } else {
+      document.querySelector('.Menu-bar .Menu-bar-options a').focus();
+    }
   }, [windowSize]);
 
   function setSubMenu(name) {
     setSubMenuName(name);
     if (name === subMenuName) document.querySelector('.Sub-menu.Active a').focus();
-  }
-
-  function handleMenuBarBackButton() {
-    if (subMenuName) {
-      setSubMenuName(null);
-      return;
-    }
-    if (visibleMenuName && visibleMenuName !== 'Toggle-menu') {
-      setVisibleMenuName('Toggle-menu');
-      return;
-    }
-    setVisibleMenuName(null);
-    setMenuIsActive(null);
-    document.querySelector('.Menu-bar button.Toggle-menu').focus();
-  }
-
-  function handleOutsideOfMenuClick() {
-    if (menuIsActive) {
-      setVisibleMenuName(null);
-      setSubMenuName(null);
-      setSubMenuDetailsVisible(false);
-    }
-    setMenuIsActive(false);
-  }
-
-  function handleSubMenuMouseLeave() {
-    setSubMenuDetailsVisible(false);
   }
 
   function closeMenu() {
@@ -91,6 +69,31 @@ export default function MenuHook({ windowSize }) {
     } else {
       document.querySelector('.Menu-bar .Menu-bar-options a').focus();
     }
+  }
+
+  function handleMenuBarBackButton() {
+    if (subMenuName) {
+      setSubMenuName(null);
+      return;
+    }
+    if (visibleMenuName && visibleMenuName !== 'Toggle-menu') {
+      setVisibleMenuName('Toggle-menu');
+      return;
+    }
+    closeMenu();
+  }
+
+  function handleOutsideOfMenuClick() {
+    if (menuIsActive) {
+      setVisibleMenuName(null);
+      setSubMenuName(null);
+      setSubMenuDetailsVisible(false);
+      setMenuIsActive(false);
+    }
+  }
+
+  function handleSubMenuMouseLeave() {
+    setSubMenuDetailsVisible(false);
   }
 
   function openMenu() {
