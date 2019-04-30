@@ -5,9 +5,12 @@ import SubMenu from './SubMenu';
 import MenuList from './MenuList';
 import SubMenuDetails from './SubMenuDetails';
 import FakeLink from '../FakeLink/FakeLink';
+import MenuBarHook from '../MenuBar/MenuBarHook';
 import './Menu.scss';
+/* eslint-disable react/prop-types */
 
-export default function MenuBarHook(windowSize) {
+export default function MenuHook({ windowSize }) {
+  const menuItemsArray = ['Shop', 'Read'];
   const [menuIsActive, setMenuIsActive] = useState(null);
   useEffect(() => {
     if (menuIsActive) {
@@ -23,31 +26,32 @@ export default function MenuBarHook(windowSize) {
     if (visibleMenuName) {
       setSubMenuDetailsVisible(false);
     }
-  }, visibleMenuName);
+  }, [visibleMenuName]);
   const [subMenuName, setSubMenuName] = useState(null);
+
   useEffect(() => {
     if (subMenuName) {
       setSubMenuDetailsVisible(false);
+      document.querySelector('.Sub-menu.Active a').focus();
     }
-  }, subMenuName);
+  }, [subMenuName]);
+
+  useEffect(() => {
+    if (menuItemsArray.includes(visibleMenuName) && subMenuName === null && windowSize === 'small') {
+      document.querySelector('.Test-menu.Open-menu .Menu-list.Visible a').focus();
+    }
+  }, [visibleMenuName]);
 
   useEffect(() => {
     setMenuIsActive(false);
     setSubMenuName(null);
     setSubMenuDetailsVisible(false);
     setVisibleMenuName(null);
-  }, windowSize);
+  }, [windowSize]);
 
   function setSubMenu(name) {
     setSubMenuName(name);
-    document.querySelector('.Sub-menu.Active a').focus();
-    // TAKE CARE OF SETSTATE CALLBACK
-    // this.setState({
-    //   subMenuName: name,
-    // },
-    // () => {
-    //   document.querySelector('.Sub-menu.Active a').focus();
-    // });
+    if (name === subMenuName) document.querySelector('.Sub-menu.Active a').focus();
   }
 
   function handleMenuBarBackButton() {
@@ -61,6 +65,7 @@ export default function MenuBarHook(windowSize) {
     }
     setVisibleMenuName(null);
     setMenuIsActive(null);
+    document.querySelector('.Menu-bar button.Toggle-menu').focus();
   }
 
   function handleOutsideOfMenuClick() {
@@ -81,6 +86,11 @@ export default function MenuBarHook(windowSize) {
     setSubMenuName(null);
     setSubMenuDetailsVisible(false);
     setVisibleMenuName(null);
+    if (windowSize === 'small') {
+      document.querySelector('.Menu-bar button.Toggle-menu').focus();
+    } else {
+      document.querySelector('.Menu-bar .Menu-bar-options a').focus();
+    }
   }
 
   function openMenu() {
@@ -91,13 +101,11 @@ export default function MenuBarHook(windowSize) {
   function showMenuList(listName) {
     if (listName === 'Toggle-menu' && menuIsActive) {
       closeMenu();
+      document.querySelector('.Menu-bar button.Toggle-menu').focus();
       return;
     }
-    // setVisibleMenuName(listName);
-    // setSubMenuName(null);  TAKE CARE OF SETSTATE CALLBACK
-    if (listName === 'Toggle-menu') {
-      document.querySelector('.Test-menu.Open-menu .Menu-list.Visible a').focus();
-    }
+    setVisibleMenuName(listName);
+    setSubMenuName(null);
   }
 
   function showSubMenuDetails() {
@@ -129,7 +137,7 @@ export default function MenuBarHook(windowSize) {
           <div onMouseEnter={() => handleSubMenuMouseLeave()} className={`Test-menu ${openMenuClass}`}>
             <MenuList
               menuName="Toggle-menu"
-              menuItemsArray={['Shop', 'Read']}
+              menuItemsArray={menuItemsArray}
               visibleMenuName={visibleMenuName}
               setSubMenu={name => showMenuList(name)}
               menuIsActive={menuIsActive}

@@ -9,9 +9,7 @@ const Content = () => (
   <div className="Content">
     <div src={headerPic} alt="" className="Header-picture" />
     <div className="Product-section">
-      <div className="Product-picture-container">
-        <img alt="" className="Decoration-picture" src={contentProduct} />
-      </div>
+      <img alt="" className="Product-picture" src={contentProduct} />
       <div className="Product-container">
         <h5>Gentle Facial Cleansing Milk</h5>
         <h2>The skin at ease</h2>

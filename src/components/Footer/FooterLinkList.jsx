@@ -23,7 +23,7 @@ class FooterLinkList extends React.PureComponent {
     const { linkListArray, listName, windowSize } = this.props;
     const { dropdownActive } = this.state;
     const linkList = linkListArray.map(linkItem => <FakeLink key={linkItem} className="Link" text={linkItem} />);
-    const height = windowSize === 'small' && !dropdownActive ? 1 : 'auto';
+    const height = windowSize === 'small' && !dropdownActive ? 0 : 'auto';
     const arrowActiveClass = windowSize === 'small' && dropdownActive ? 'Active' : '';
     return (
       <div className="Link-list">

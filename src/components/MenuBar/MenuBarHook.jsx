@@ -51,7 +51,13 @@ export default function MenuBarHook({
         <div className="Menu-bar-options">
           {menuBarOptions}
         </div>
-        <button type="button" tabIndex={menuIsActive ? 0 : -1} className={`Close-menu ${closeButtonVisibleClass}`} onClick={handleCloseMenuClick} />
+        <button
+          type="button"
+          tabIndex={menuIsActive ? 0 : -1}
+          aria-label="Close menu"
+          className={`Close-menu ${closeButtonVisibleClass}`}
+          onClick={handleCloseMenuClick}
+        />
       </div>
     );
   }
@@ -63,6 +69,7 @@ export default function MenuBarHook({
         <button
           onClick={() => handleBackButton()}
           type="button"
+          aria-label="Back in menu"
           className={`Menu-back-button ${toggleMenuActive}`}
         >
           <img alt="left arrow" src={arrowPicture} />
@@ -72,6 +79,7 @@ export default function MenuBarHook({
       <div>
         <FakeLink tabIndex={menuIsActive ? -1 : 0} text="Login" className="Menu-link Login-button" />
         <button
+          aria-label="Toggle menu"
           className={`Toggle-menu ${toggleMenuActive}`}
           type="button"
           onClick={() => handleFakeLinkClick('Toggle-menu')}

@@ -32,22 +32,19 @@
       @media (max-width: 1025px) {
         width: 65%;
         margin-right: 0;
-        order: 0;
+        order: -1;
+        margin-bottom: 30px;
       }
     }
-    .Product-picture-container {
-      width: 40%;
-      min-width: 344px;
-      max-height: 400px;
-      text-align: center;
-      @media (max-width: 1025px) {
-        order: 1;
-        margin-top: 40px;
-        .Decoration-picture {
-          min-height: 350px;
-          min-width: 344px;
-        }
+    .Product-picture {
+      @media (max-width:1025px) {
+        height: 400px;
       }
+      @media(max-width: 640px) {
+        height: 350px;
+      }
+      height: 500px;
+      width: auto;
     }
   }
   .Store-locator-section {
