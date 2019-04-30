@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import OutsideClickHandler from 'react-outside-click-handler';
 import FocusTrap from 'focus-trap-react';
 import SubMenu from './SubMenu';
@@ -7,10 +8,18 @@ import SubMenuDetails from './SubMenuDetails';
 import FakeLink from '../FakeLink/FakeLink';
 import MenuBarHook from '../MenuBar/MenuBarHook';
 import './Menu.scss';
-/* eslint-disable react/prop-types */
+
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
 
 export default function MenuHook({ windowSize }) {
   const menuItemsArray = ['Shop', 'Read'];
+
   const [menuIsActive, setMenuIsActive] = useState(null);
   useEffect(() => {
     if (menuIsActive) {
@@ -19,37 +28,38 @@ export default function MenuHook({ windowSize }) {
       document.getElementsByTagName('BODY')[0].style.overflow = 'visible';
     }
   }, [menuIsActive]);
+
   const [visibleMenuName, setVisibleMenuName] = useState(null);
   const [subMenuDetailsVisible, setSubMenuDetailsVisible] = useState(false);
-
   useEffect(() => {
     if (visibleMenuName) {
       setSubMenuDetailsVisible(false);
     }
   }, [visibleMenuName]);
-  const [subMenuName, setSubMenuName] = useState(null);
 
+  const [subMenuName, setSubMenuName] = useState(null);
   useEffect(() => {
     if (subMenuName) {
       setSubMenuDetailsVisible(false);
       document.querySelector('.Sub-menu.Active a').focus();
     }
   }, [subMenuName]);
-
   useEffect(() => {
     if (menuItemsArray.includes(visibleMenuName) && subMenuName === null && windowSize === 'small') {
       document.querySelector('.Test-menu.Open-menu .Menu-list.Visible a').focus();
     }
   }, [visibleMenuName]);
 
+  const prevWindowSize = usePrevious(windowSize);
   useEffect(() => {
     setMenuIsActive(false);
     setSubMenuName(null);
     setSubMenuDetailsVisible(false);
     setVisibleMenuName(null);
-    if (windowSize === 'small') {
+    if (windowSize === 'small' && prevWindowSize) {
       document.querySelector('.Menu-bar button.Toggle-menu').focus();
-    } else {
+    }
+    if (windowSize === 'big' && prevWindowSize) {
       document.querySelector('.Menu-bar .Menu-bar-options a').focus();
     }
   }, [windowSize]);
@@ -192,3 +202,11 @@ export default function MenuHook({ windowSize }) {
     </React.Fragment>
   );
 }
+
+MenuHook.defaultProps = {
+  windowSize: null,
+};
+
+MenuHook.propTypes = {
+  windowSize: PropTypes.string,
+};
