@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Menu from './components/Menu/Menu';
+import MenuHook from './components/Menu/MenuHook';
 import Content from './components/Content/Content';
 import Footer from './components/Footer/Footer';
 import './App.scss';
@@ -37,7 +37,7 @@ class App extends Component {
     const { windowSize } = this.state;
     return (
       <div className="App">
-        <Menu windowSize={windowSize} />
+        <MenuHook windowSize={windowSize} />
         <Content />
         <Footer windowSize={windowSize} />
       </div>
