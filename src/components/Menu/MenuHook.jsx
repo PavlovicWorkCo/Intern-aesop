@@ -56,11 +56,13 @@ export default function MenuHook({ windowSize }) {
     setSubMenuName(null);
     setSubMenuDetailsVisible(false);
     setVisibleMenuName(null);
-    if (windowSize === 'small' && prevWindowSize) {
-      document.querySelector('.Menu-bar button.Toggle-menu').focus();
-    }
-    if (windowSize === 'big' && prevWindowSize) {
-      document.querySelector('.Menu-bar .Menu-bar-options a').focus();
+    if (menuIsActive) {
+      if (windowSize === 'small' && prevWindowSize) {
+        document.querySelector('.Menu-bar button.Toggle-menu').focus();
+      }
+      if (windowSize === 'big' && prevWindowSize) {
+        document.querySelector('.Menu-bar .Menu-bar-options a').focus();
+      }
     }
   }, [windowSize]);
 

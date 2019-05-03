@@ -30,7 +30,7 @@ class Menu extends React.PureComponent {
       }
     }
 
-    if (prevProps.windowSize !== windowSize && prevProps.windowSize) {
+    if (prevProps.windowSize !== windowSize && prevProps.windowSize && menuIsActive) {
       this.closeMenu();
     }
     if ((prevState.visibleMenuName && prevState.visibleMenuName !== visibleMenuName)
