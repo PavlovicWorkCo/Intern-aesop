@@ -50,12 +50,15 @@ export default function MenuHook({ windowSize }) {
     }
   }, [visibleMenuName]);
 
-  const prevWindowSize = usePrevious(windowSize);
-  useEffect(() => {
+  function closeMenu() {
     setMenuIsActive(false);
     setSubMenuName(null);
     setSubMenuDetailsVisible(false);
     setVisibleMenuName(null);
+  }
+  const prevWindowSize = usePrevious(windowSize);
+  useEffect(() => {
+    closeMenu();
     if (menuIsActive) {
       if (windowSize === 'small' && prevWindowSize) {
         document.querySelector('.Menu-bar button.Toggle-menu').focus();
@@ -71,11 +74,8 @@ export default function MenuHook({ windowSize }) {
     if (name === subMenuName) document.querySelector('.Sub-menu.Active a').focus();
   }
 
-  function closeMenu() {
-    setMenuIsActive(false);
-    setSubMenuName(null);
-    setSubMenuDetailsVisible(false);
-    setVisibleMenuName(null);
+  function handleCloseMenu() {
+    closeMenu();
     if (windowSize === 'small') {
       document.querySelector('.Menu-bar button.Toggle-menu').focus();
     } else {
@@ -92,7 +92,7 @@ export default function MenuHook({ windowSize }) {
       setVisibleMenuName('Toggle-menu');
       return;
     }
-    closeMenu();
+    handleCloseMenu();
   }
 
   function handleOutsideOfMenuClick() {
@@ -115,7 +115,7 @@ export default function MenuHook({ windowSize }) {
 
   function showMenuList(listName) {
     if (listName === 'Toggle-menu' && menuIsActive) {
-      closeMenu();
+      handleCloseMenu();
       document.querySelector('.Menu-bar button.Toggle-menu').focus();
       return;
     }
@@ -145,7 +145,7 @@ export default function MenuHook({ windowSize }) {
             menuIsActive={menuIsActive}
             openMenu={() => openMenu()}
             showMenuList={listName => showMenuList(listName)}
-            handleCloseMenuClick={() => closeMenu()}
+            handleCloseMenuClick={() => handleCloseMenu()}
             windowSize={windowSize}
             handleBackButton={() => handleMenuBarBackButton()}
           />
