@@ -41,7 +41,9 @@ export default function MenuHook({ windowSize }) {
   useEffect(() => {
     if (subMenuName) {
       setSubMenuDetailsVisible(false);
-      document.querySelector('.Sub-menu.Active a').focus();
+      if (document.activeElement.classList.contains('Menu-fake-link')) {
+        document.querySelector('.Sub-menu.Active a').focus();
+      }
     }
   }, [subMenuName]);
   useEffect(() => {
